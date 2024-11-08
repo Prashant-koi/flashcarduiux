@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
+import CardFlip from './components/CardFlip';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
     <Navbar />
     <div className="max-w-7xl mx-auto pt-20 px-6">
     <HeroSection />
+    <CardFlip />
     <Footer/>
 
     </div>

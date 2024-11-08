@@ -33,7 +33,7 @@ const UploadPdf = () => {
         {/* Custom button for file input */}
         <button
           onClick={handleFileClick}
-          className="bg-gradient-to-r from-yellow-600 via-amber-700 to-amber-800 text-white py-3 px-4 rounded-md cursor-pointer"
+          className="text-[0.7rem] sm:text-[0.75] md:text-sm bg-gradient-to-r from-yellow-600 via-amber-700 to-amber-800 text-white py-2 px-4 rounded-md cursor-pointer text-center"
         >
           Choose PDF File
         </button>
@@ -41,7 +41,7 @@ const UploadPdf = () => {
         {/* Generate Flashcards button */}
         <a
           href="#"
-          className="py-3 px-4 rounded-md border cursor-pointer text-white border-white"
+          className=" text-[0.7rem] sm:text-[0.8] md:text-sm py-2 px-4 rounded-md border cursor-pointer text-white border-white text-center"
         >
           Generate Flashcards
         </a>
@@ -49,8 +49,8 @@ const UploadPdf = () => {
 
       {/* Display selected file name */}
       {fileName && (
-        <p className="mt-4 text-gray-400">
-          Selected file: {fileName}
+        <p className="text-[0.7rem] sm:text-[0.75rem] md:text-sm lg:text-base mt-4 text-gray-400 text-center mx-2">
+          Selected file: <span className='italic'>{fileName}</span>
         </p>
       )}
     </div>
