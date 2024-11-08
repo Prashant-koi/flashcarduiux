@@ -1,3 +1,4 @@
+import UploadPdf from "./UploadPdf"
 
 
 const HeroSection = () => {
@@ -14,14 +15,8 @@ const HeroSection = () => {
             <p className="mt-10 text-lg text-center text-neutral-500 max-w-4xl">
                 Empower your Knowladge by making Flashcards from specific PDFs you provide and in the topics you want to study.
             </p>
-            <div className="flex justify-center my-10">
-                <a href="#" className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md">
-                Upload PDF
-                </a>
-                <a href="#" className="py-3 px-4 mx-3 rounded-md border">
-                Generate Flashcards
-                </a>
-            </div>
+            
+            <UploadPdf />
             
         </div>
     </div>
