@@ -11,7 +11,7 @@ const HeroSection = () => {
 
                 </span>
             </h1>
-            <p className="mt-10 text-lg texxt-center text-neutral-500 max-w-4xl">
+            <p className="mt-10 text-lg text-center text-neutral-500 max-w-4xl">
                 Empower your Knowladge by making Flashcards from specific PDFs you provide and in the topics you want to study on.
             </p>
             <div className="flex justify-center my-10">
