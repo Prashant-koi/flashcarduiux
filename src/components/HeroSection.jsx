@@ -7,7 +7,7 @@ const HeroSection = () => {
         <div className="flex flex-col items-center mt-2 lg:mt-10">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl text-center tracking-wide">
                 Turn your PDFs 
-                <span className="bg-gradient-to-r from-orange-500 to-red-800 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-yellow-600 via-amber-700 to-amber-800 text-transparent bg-clip-text">
                 {" "}to Flashcards!
 
                 </span>

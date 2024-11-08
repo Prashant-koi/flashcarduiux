@@ -1,24 +1,3 @@
-
-// const UploadPdf = () => {
-//   return (
-    
-//       <div className="flex justify-center my-10">
-//                 <input type="file" className="bg-gradient-to-r from-orange-500 to-orange-800 py-3 px-4 mx-3 rounded-md file-hidden"  />
-                
-                
-//                 <a href="#" className="py-3 px-4 mx-3 rounded-md border">
-//                 Generate Flashcards
-//                 </a>
-//             </div>
-
-//   )
-// }
-
-// export default UploadPdf
-
-
-
-
 import { useRef } from 'react';
 
 const UploadPdf = () => {
@@ -43,7 +22,7 @@ const UploadPdf = () => {
       {/* Custom button for file input */}
       <button
         onClick={handleFileClick}
-        className="bg-gradient-to-r from-orange-500 to-orange-800 text-white py-3 px-4 mx-3 rounded-md cursor-pointer"
+        className="bg-gradient-to-r from-yellow-600 via-amber-700 to-amber-800 text-white py-3 px-4 mx-3 rounded-md cursor-pointer"
       >
         Choose PDF File
       </button>
