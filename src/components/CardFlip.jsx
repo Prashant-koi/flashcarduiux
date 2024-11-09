@@ -54,12 +54,12 @@ const CardFlip = () => {
               }`}
             >
               {/* Front Side */}
-              <div className="absolute w-full h-full flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-800 text-white backface-hidden rounded-lg">
+              <div className="absolute w-full h-full flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-800 text-white backface-hidden rounded-lg font-bold text-center">
                 <p>{currentFlashcard.front}</p>
               </div>
 
               {/* Back Side */}
-              <div className="absolute w-full h-full flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-800 text-white backface-hidden rotate-y-180 rounded-lg">
+              <div className="absolute w-full h-full flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-800 text-white backface-hidden rotate-y-180 rounded-lg font-bold text-center">
                 <p>{currentFlashcard.back}</p>
               </div>
             </div>
