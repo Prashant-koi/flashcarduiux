@@ -16,7 +16,7 @@ const HeroSection = () => {
                 Empower your Knowladge by making Flashcards from specific PDFs you provide and in the topics you want to study.
             </p>
             
-            <UploadPdf />
+            <UploadPdf  />
             
         </div>
     </div>

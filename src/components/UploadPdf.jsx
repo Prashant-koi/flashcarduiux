@@ -1,15 +1,11 @@
-
-
 import { useRef, useState } from 'react';
 import axios from 'axios';
-import pdfToText from 'react-pdftotext'
+import pdfToText from 'react-pdftotext';
 
-
-const UploadPdf = () => {
+const UploadPdf = ({ onFlashcardsGenerated }) => {
   const fileInputRef = useRef(null);
   const [fileName, setFileName] = useState('');
   const [pdfText, setPdfText] = useState('');
-
 
   const handleFileClick = () => {
     if (fileInputRef.current) {
@@ -17,19 +13,20 @@ const UploadPdf = () => {
     }
   };
 
-  function extractText(event) {
-    const file = event.target.files[0]
+  const extractText = (event) => {
+    const file = event.target.files[0];
+    setFileName(file.name);
     pdfToText(file)
-        .then(text => setPdfText(text))
-        .catch(error => console.error("Failed to extract text from pdf"))
-}
+      .then((text) => setPdfText(text))
+      .catch((error) => console.error("Failed to extract text from PDF"));
+  };
 
   const handleGenerateFlashcards = async () => {
     if (!pdfText) {
       console.log("No text extracted from PDF.");
       return;
     }
-
+  
     try {
       const response = await axios.post(
         'https://api.openai.com/v1/chat/completions',
@@ -38,8 +35,7 @@ const UploadPdf = () => {
           messages: [
             {
               role: 'system',
-              content:
-                'You are a helpful assistant that generates flashcards in a Q&A format based on provided content.',
+              content: 'Generate flashcards in valid JSON format with an array of objects, each having "front" and "back" fields. Each front and back should be no more than 10 words.Front should be a question and back shoud be a answer to the question.',
             },
             {
               role: 'user',
@@ -56,13 +52,29 @@ const UploadPdf = () => {
           },
         }
       );
-
-      const flashcards = response.data.choices[0].message.content;
-      console.log("Flashcards:", flashcards);
+  
+      let content = response.data.choices[0].message.content;
+      console.log("API Response:", content); // Log the full response content
+  
+      // Remove any wrapping backticks and "```json" if present
+      content = content.replace(/```json|```/g, '').trim();
+  
+      try {
+        const flashcards = JSON.parse(content);
+        console.log("Parsed Flashcards:", flashcards);
+  
+        if (onFlashcardsGenerated) {
+          onFlashcardsGenerated(flashcards);
+        }
+      } catch (jsonError) {
+        console.error("Failed to parse JSON:", jsonError);
+        console.error("Response content was:", content);
+      }
     } catch (error) {
       console.error("Error generating flashcards:", error);
     }
   };
+  
 
   return (
     <div className="flex flex-col items-center my-10">
@@ -77,14 +89,14 @@ const UploadPdf = () => {
       <div className="flex space-x-4">
         <button
           onClick={handleFileClick}
-          className="text-[0.7rem] sm:text-[0.75] md:text-sm bg-gradient-to-r from-yellow-600 via-amber-700 to-amber-800 text-white py-2 px-4 rounded-md cursor-pointer text-center"
+          className="text-[0.7rem] sm:text-[0.75rem] md:text-sm bg-gradient-to-r from-yellow-600 via-amber-700 to-amber-800 text-white py-2 px-4 rounded-md cursor-pointer text-center"
         >
           Choose PDF File
         </button>
 
         <button
           onClick={handleGenerateFlashcards}
-          className="text-[0.7rem] sm:text-[0.8] md:text-sm py-2 px-4 rounded-md border cursor-pointer text-white border-white text-center"
+          className="text-[0.7rem] sm:text-[0.8rem] md:text-sm py-2 px-4 rounded-md border cursor-pointer text-white border-white text-center"
         >
           Generate Flashcards
         </button>
@@ -100,4 +112,5 @@ const UploadPdf = () => {
 };
 
 export default UploadPdf;
+
 
