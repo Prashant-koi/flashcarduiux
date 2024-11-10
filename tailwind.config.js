@@ -23,6 +23,9 @@ export default {
         '.rotate-y-180': {
           transform: 'rotateY(180deg)',
         },
+        '.rotate-x-180': {  // Added for vertical flipping
+          transform: 'rotateX(180deg)',
+        },
         '.backface-hidden': {
           backfaceVisibility: 'hidden',
         },
